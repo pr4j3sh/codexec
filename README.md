@@ -89,3 +89,5 @@ codexec is a Python package that allows you to execute code written in various p
 <!-- ## License -->
 <!---->
 <!-- This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. -->
+
+> requires `.env` file
