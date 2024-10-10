@@ -1,6 +1,6 @@
 """Console script for codexec."""
-import codexec
 
+import codexec
 import typer
 from rich.console import Console
 
@@ -9,12 +9,14 @@ console = Console()
 
 
 @app.command()
-def main():
+def main(file_path: str, input_path: str = None):
     """Console script for codexec."""
-    console.print("Replace this message by putting your code into "
-               "codexec.cli.main")
-    console.print("See Typer documentation at https://typer.tiangolo.com/")
-    
+    try:
+        output = codexec.exec_code(file_path, input_path)
+        typer.echo(output)
+    except Exception as e:
+        if str(e) != "":
+            console.print(f"[red]error:[/red] {str(e)}")
 
 
 if __name__ == "__main__":
