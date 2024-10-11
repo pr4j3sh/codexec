@@ -33,8 +33,6 @@ def get_lang_code(file_path: str):
         lang_code = 71
     elif ext[1:] == "js":
         lang_code = 63
-    else:
-        typer.echo(f"unsupported file extension: {ext}", err=True)
     return lang_code
 
 
@@ -70,6 +68,8 @@ def exec_code(file_path: str, input_path: str):
     response = get_output(lang_code, input, code)
     if isinstance(response, dict) and "data" in response:
         output = response["data"].get("stdout", "no output available")
+        if output == None:
+            output = response["data"].get("compile_output", "no output available")
         return output
     else:
         typer.echo("received unexpected output format.", err=True)
