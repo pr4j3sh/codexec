@@ -9,7 +9,14 @@ console = Console()
 
 
 @app.command()
-def main(file_path: str, input_path: str = None):
+def main(
+    file_path: str = typer.Argument(
+        ..., help="The path to the code file you want to execute."
+    ),
+    input_path: str = typer.Option(
+        None, help="The path to the input file for the code (optional)."
+    ),
+):
     """Console script for codexec."""
     try:
         output = codexec.exec_code(file_path, input_path)

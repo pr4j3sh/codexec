@@ -4,20 +4,24 @@ import os
 import requests
 import typer
 from dotenv import load_dotenv
+from rich.console import Console
+from rich.spinner import Spinner
 
 load_dotenv()
+console = Console()
 
 
 def get_output(lang_code: int, input: str, code: str):
     url = os.getenv("CODE_ENGINE_URL")
     payload = {"languageCode": lang_code, "input": input, "code": code}
 
-    try:
-        response = requests.post(url, json=payload)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        return {"error": str(e)}
+    with console.status("[bold green]executing code...") as status:
+        try:
+            response = requests.post(url, json=payload)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            return {"error": str(e)}
 
 
 def get_lang_code(file_path: str):
