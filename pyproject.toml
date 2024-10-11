@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "codexec"
 version = "0.1.0"
-description = "processes code files written in c, cpp, java, python, javascript"
+description = "compiles and executes code files written in c, cpp, java, python, javascript"
 readme = "README.rst"
 authors = [
   {name = "prajesh", email = "prajesh.eleven118@gmail.com"}

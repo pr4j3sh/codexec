@@ -1,4 +1,11 @@
-"""Console script for codexec."""
+"""Console script for codexec.
+
+This script provides a command-line interface (CLI) for executing code files
+using the `codexec` package.
+
+The user can specify the file path of the code to execute and an optional input
+file for programs that require input.
+"""
 
 import codexec
 import typer
@@ -17,7 +24,21 @@ def main(
         None, help="The path to the input file for the code (optional)."
     ),
 ):
-    """Console script for codexec."""
+    """
+    Executes code from a file and optionally takes an input file.
+
+    Parameters
+    ----------
+    file_path : str
+        The path to the source code file to be executed.
+    input_path : str, optional
+        The path to the input file for the code (optional).
+
+    Raises
+    ------
+    Exception
+        If there is an error during the code execution process.
+    """
     try:
         output = codexec.exec_code(file_path, input_path)
         typer.echo(output)

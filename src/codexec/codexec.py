@@ -1,17 +1,54 @@
-"""Main module."""
+"""Main module for codexec.
+
+This module contains the core functionality for executing code in various
+languages (C, C++, Java, Python, JavaScript) by making API calls to a server.
+
+Functions:
+----------
+get_output(lang_code: int, input: str, code: str):
+    Sends a POST request to execute code based on the provided language and input.
+
+get_lang_code(file_path: str):
+    Returns the language code based on the file extension.
+
+read_code(file_path: str):
+    Reads and returns the contents of the given code file.
+
+read_input(input_path: str):
+    Reads and returns the contents of the given input file.
+
+exec_code(file_path: str, input_path: str):
+    Executes the code from the provided file, with optional input, and returns the output.
+"""
 
 import os
 import requests
 import typer
 from dotenv import load_dotenv
 from rich.console import Console
-from rich.spinner import Spinner
 
 load_dotenv()
 console = Console()
 
 
-def get_output(lang_code: int, input: str, code: str):
+def get_output(lang_code: int, input: str, code: str) -> dict:
+    """
+    Sends a code execution request to the external code execution API.
+
+    Parameters
+    ----------
+    lang_code : int
+        The code representing the programming language of the file.
+    input : str
+        The input for the code execution.
+    code : str
+        The actual code to be executed.
+
+    Returns
+    -------
+    dict
+        The JSON response from the code execution API, or an error message.
+    """
     url = os.getenv("CODE_ENGINE_URL")
     payload = {"languageCode": lang_code, "input": input, "code": code}
 
@@ -24,7 +61,20 @@ def get_output(lang_code: int, input: str, code: str):
             return {"error": str(e)}
 
 
-def get_lang_code(file_path: str):
+def get_lang_code(file_path: str) -> int:
+    """
+    Returns the language code based on the file extension.
+
+    Parameters
+    ----------
+    file_path : str
+        The file path of the source code file.
+
+    Returns
+    -------
+    int
+        The language code corresponding to the file extension.
+    """
     lang_code = -1
     _, ext = os.path.splitext(file_path)
     if ext[1:] == "c":
@@ -40,17 +90,58 @@ def get_lang_code(file_path: str):
     return lang_code
 
 
-def read_code(file_path: str):
+def read_code(file_path: str) -> str:
+    """
+    Reads and returns the contents of a source code file.
+
+    Parameters
+    ----------
+    file_path : str
+        The file path of the source code file.
+
+    Returns
+    -------
+    str
+        The contents of the file as a string.
+    """
     with open(file_path, "r") as file:
         return file.read()
 
 
-def read_input(input_path: str):
+def read_input(input_path: str) -> str:
+    """
+    Reads and returns the contents of an input file.
+
+    Parameters
+    ----------
+    input_path : str
+        The file path of the input file.
+
+    Returns
+    -------
+    str
+        The contents of the input file as a string.
+    """
     with open(input_path, "r") as file:
         return file.read()
 
 
-def exec_code(file_path: str, input_path: str):
+def exec_code(file_path: str, input_path: str) -> str:
+    """
+    Executes code based on the provided file path and optional input path.
+
+    Parameters
+    ----------
+    file_path : str
+        The file path of the source code file.
+    input_path : str
+        The file path of the input file (optional).
+
+    Returns
+    -------
+    str
+        The output from the code execution, or an error message.
+    """
     code = ""
     input = ""
     lang_code = -1
