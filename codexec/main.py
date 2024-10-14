@@ -29,7 +29,6 @@ def getlangcode(filepath):
 
 
 def execode(url, code, input, langcode):
-    url = os.getenv("CODE_ENGINE_URL")
     payload = {"languageCode": langcode, "input": input, "code": code}
 
     try:
@@ -57,8 +56,6 @@ def main():
     output = ""
 
     url = "https://code-engine.codehelp.in/api/v1/quick-compiler/run"
-
-    print(args.codefile, args.inputfile)
 
     code = readfile(codefile)
     langcode = getlangcode(codefile)
