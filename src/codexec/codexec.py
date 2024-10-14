@@ -24,6 +24,7 @@ exec_code(file_path: str, input_path: str):
 import os
 import requests
 import typer
+from typing import Optional
 from dotenv import load_dotenv
 from rich.console import Console
 
@@ -126,7 +127,7 @@ def read_input(input_path: str) -> str:
         return file.read()
 
 
-def exec_code(file_path: str, input_path: str) -> str:
+def exec_code(file_path: str, input_path: Optional[str] = None):
     """
     Executes code based on the provided file path and optional input path.
 

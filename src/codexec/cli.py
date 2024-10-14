@@ -7,7 +7,7 @@ The user can specify the file path of the code to execute and an optional input
 file for programs that require input.
 """
 
-from codexec import exec_code
+from codexec.codexec import exec_code  # Ensure this import is correct
 import typer
 from rich.console import Console
 
@@ -43,8 +43,7 @@ def main(
         output = exec_code(file_path, input_path)
         typer.echo(output)
     except Exception as e:
-        if str(e) != "":
-            console.print(f"[red]error:[/red] {str(e)}")
+        console.print(f"[red]error:[/red] {str(e)}")
 
 
 if __name__ == "__main__":
