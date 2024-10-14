@@ -7,7 +7,6 @@ codexec is a Python package that allows you to execute code written in various p
 - Execute code in multiple languages: C, C++, Java, Python, and JavaScript.
 - Simple command-line interface (CLI) for executing code files.
 - Supports optional input files for code that requires input.
-- Easy integration with environment variables for configuration.
 
 ## Usage
 
