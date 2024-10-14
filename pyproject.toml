@@ -14,7 +14,7 @@ maintainers = [
 ]
 readme = "README.md"
 dependencies = [
-  "requests"
+  "requests",
 ]
 
 [project.scripts]

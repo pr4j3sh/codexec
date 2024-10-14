@@ -1,6 +1,7 @@
 import argparse
 import requests
 import os
+import itertools
 import sys
 
 
@@ -30,7 +31,6 @@ def getlangcode(filepath):
 
 def execode(url, code, input, langcode):
     payload = {"languageCode": langcode, "input": input, "code": code}
-
     try:
         response = requests.post(url, json=payload)
         response.raise_for_status()
