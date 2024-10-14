@@ -41,7 +41,10 @@ package-dir = {"" = "src"}
 [tool.setuptools.package-data]
 "*" = ["*.*"]
 
-
+[tool.setuptools.entry-points]
+console_scripts = [
+    "codexec=codexec.cli:app"
+]
 
 
 # Mypy
