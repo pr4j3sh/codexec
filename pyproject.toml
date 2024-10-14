@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "codexec"
-version = "0.1.7"
+version = "0.1.8"
 description = "compiles and executes code files written in c, cpp, java, python and javascript"
 authors = [
   {name = "prajesh", email = "prajesh.eleven118@gmail.com"}
@@ -14,7 +14,6 @@ maintainers = [
 ]
 readme = "README.md"
 dependencies = [
-  "python-dotenv",
   "requests"
 ]
 

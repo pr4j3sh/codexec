@@ -2,6 +2,4 @@
 build
 *.egg-info
 
-.env
-
 __pycache__

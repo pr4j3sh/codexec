@@ -1,7 +1,6 @@
 import argparse
-import os
-from dotenv import load_dotenv
 import requests
+import os
 import sys
 
 
@@ -57,9 +56,7 @@ def main():
     input = ""
     output = ""
 
-    load_dotenv()
-
-    url = os.getenv("CODE_ENGINE_URL")
+    url = "https://code-engine.codehelp.in/api/v1/quick-compiler/run"
 
     print(args.codefile, args.inputfile)
 
