@@ -7,7 +7,7 @@ The user can specify the file path of the code to execute and an optional input
 file for programs that require input.
 """
 
-from codexec.codexec import exec_code
+from codexec import exec_code
 import typer
 from rich.console import Console
 
