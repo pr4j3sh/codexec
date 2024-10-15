@@ -33,7 +33,7 @@ codexec is a Python package that allows you to execute code written in various p
    If your code requires input, you can specify an input file:
 
    ```bash
-   codexec path/to/your/code.py --i path/to/input.txt
+   codexec path/to/your/code.py -i path/to/input.txt
    ```
 
 4. **Supported Languages**:
